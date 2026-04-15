@@ -1,0 +1,10 @@
+flask>=3.0.0
+gunicorn>=21.0.0
+# FIX #3: use CPU-only torch to keep slug size small on Railway free tier
+torch>=2.0.0
+transformers>=4.40.0
+numpy>=1.26.0
+matplotlib>=3.8.0
+groq>=0.9.0
+python-dotenv>=1.0.0
+# FIX #4: removed sentence-transformers — not used in Flask app.py (saves ~1 GB)

@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Debugger — AI Python Assistant</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&family=Syne:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark-dimmed.min.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<style>
+/* ── Reset & Root ─────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:        #0a0a0c;
+  --surface:   #111115;
+  --surface2:  #16161b;
+  --border:    #222228;
+  --border2:   #2e2e36;
+  --text:      #f0f0f4;
+  --muted:     #6b6b80;
+  --subtle:    #44444f;
+  --accent:    #7c6af7;
+  --accent-lo: rgba(124,106,247,0.08);
+  --green:     #22c55e;
+  --red:       #ef4444;
+  --orange:    #f97316;
+  --yellow:    #eab308;
+  --purple:    #8b5cf6;
+  --mono:      'IBM Plex Mono', monospace;
+  --sans:      'Syne', system-ui, sans-serif;
+  --r:         10px;
+  --sidebar-w: 240px;
+  --header-h:  56px;
+}
+
+html, body { height: 100%; background: var(--bg); color: var(--text); font-family: var(--sans); overflow: hidden; }
+
+/* ── Scrollbar ─────────────────────────────────────────── */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 2px; }
+
+/* ── Layout ─────────────────────────────────────────────── */
+.shell {
+  display: grid;
+  grid-template-columns: var(--sidebar-w) 1fr;
+  grid-template-rows: var(--header-h) 1fr;
+  height: 100vh;
+}
+
+/* ── Header ─────────────────────────────────────────────── */
+header {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg);
+  position: relative;
+  z-index: 50;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-icon {
+  width: 32px; height: 32px;
+  background: linear-gradient(135deg, #7c6af7 0%, #a78bfa 100%);
+  border-radius: 9px;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 0 20px rgba(124,106,247,0.3);
+  flex-shrink: 0;
+}
+
+.logo-icon svg { width: 16px; height: 16px; }
+
+.logo-name {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+
+.logo-badge {
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 500;
+  color: var(--accent);
+  background: var(--accent-lo);
+  border: 1px solid rgba(124,106,247,0.2);
+  border-radius: 4px;
+  padding: 2px 7px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.status-pill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--muted);
+}
+
+.status-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--green);
+  animation: pulse 2.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 5px rgba(34,197,94,0.6); }
+  50%       { opacity: 0.5; box-shadow: 0 0 2px rgba(34,197,94,0.3); }
+}
+
+/* ── Sidebar ─────────────────────────────────────────────── */
+aside {
+  border-right: 1px solid var(--border);
+  background: var(--surface);
+  display: flex;
+  flex-direction: column;
+  padding: 16px 12px;
+  gap: 4px;
+  overflow-y: auto;
+}
+
+.sidebar-section {
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 500;
+  color: var(--subtle);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  padding: 8px 8px 4px;
+  margin-top: 8px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--muted);
+  transition: all 0.15s ease;
+  border: 1px solid transparent;
+}
+
+.nav-item:hover { background: var(--surface2); color: var(--text); }
+.nav-item.active {
+  background: var(--accent-lo);
+  color: var(--accent);
+  border-color: rgba(124,106,247,0.2);
+}
+
+.nav-item svg { width: 14px; height: 14px; flex-shrink: 0; }
+
+.example-btn {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 7px 10px;
+  border-radius: 7px;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 10px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 3px;
+}
+
+.example-btn:hover {
+  border-color: var(--accent);
+  color: var(--text);
+  background: var(--accent-lo);
+}
+
+/* ── Main panel ──────────────────────────────────────────── */
+main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: calc(100vh - var(--header-h));
+  overflow: hidden;
+}
+
+/* ── Editor pane ─────────────────────────────────────────── */
+.pane-editor {
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+}
+
+.pane-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+  flex-shrink: 0;
+}
+
+.pane-title {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--subtle);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.pane-title span {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  opacity: 0.6;
+  display: inline-block;
+}
+
+.editor-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+}
+
+#code-input {
+  flex: 1;
+  background: var(--bg);
+  color: #c9d1d9;
+  border: none;
+  outline: none;
+  resize: none;
+  font-family: var(--mono);
+  font-size: 13px;
+  line-height: 1.75;
+  padding: 20px 20px 20px 56px;
+  caret-color: var(--accent);
+  width: 100%;
+  overflow-y: auto;
+}
+
+.line-numbers {
+  position: absolute;
+  left: 0; top: 0;
+  width: 40px;
+  padding: 20px 0;
+  font-family: var(--mono);
+  font-size: 13px;
+  line-height: 1.75;
+  color: var(--subtle);
+  text-align: right;
+  padding-right: 10px;
+  pointer-events: none;
+  user-select: none;
+  overflow: hidden;
+}
+
+.editor-footer {
+  padding: 12px 16px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--surface);
+  flex-shrink: 0;
+}
+
+.btn-primary {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 18px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  letter-spacing: 0.01em;
+}
+
+.btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+.btn-primary:active { transform: scale(0.97); }
+.btn-primary:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+
+.btn-ghost {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-ghost:hover { border-color: var(--border2); color: var(--text); background: var(--surface2); }
+
+.char-count {
+  margin-left: auto;
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--subtle);
+}
+
+/* ── Output pane ─────────────────────────────────────────── */
+.pane-output {
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  overflow: hidden;
+}
+
+.output-scroll {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ── Empty state ─────────────────────────────────────────── */
+.empty-state {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: var(--subtle);
+  padding: 40px;
+}
+
+.empty-state-icon {
+  width: 52px; height: 52px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.empty-state h3 {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.empty-state p {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--subtle);
+  text-align: center;
+}
+
+/* ── Result cards ────────────────────────────────────────── */
+.result-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  overflow: hidden;
+  animation: slideIn 0.25s ease;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+  user-select: none;
+}
+
+.card-header:hover { background: var(--surface2); }
+
+.card-title-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+
+.card-title-row svg { width: 12px; height: 12px; }
+
+.chevron {
+  color: var(--subtle);
+  transition: transform 0.2s ease;
+}
+
+.chevron.open { transform: rotate(180deg); }
+
+.card-body {
+  padding: 16px;
+}
+
+.card-body.collapsed { display: none; }
+
+/* ── Classification card ─────────────────────────────────── */
+.bug-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 10px;
+  border-radius: 5px;
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.confidence-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.confidence-label {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.explanation-block {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px;
+  font-size: 13px;
+  color: #a0a0b0;
+  line-height: 1.75;
+  margin-bottom: 16px;
+}
+
+.scores-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.score-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.score-lbl {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--subtle);
+  width: 110px;
+  flex-shrink: 0;
+}
+
+.score-lbl.active { color: #a0a0b0; font-weight: 500; }
+
+.score-bar-wrap {
+  flex: 1;
+  height: 3px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 2px;
+}
+
+.score-bar-fill {
+  height: 3px;
+  border-radius: 2px;
+  transition: width 0.6s ease;
+}
+
+.score-pct {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--subtle);
+  width: 36px;
+  text-align: right;
+}
+
+.score-pct.active { color: var(--muted); }
+
+/* ── Code block ──────────────────────────────────────────── */
+.code-block {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #0d1117;
+  border: 1px solid var(--border);
+}
+
+.code-block pre {
+  margin: 0;
+  padding: 16px;
+  overflow-x: auto;
+  font-family: var(--mono);
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.code-copy-btn {
+  position: absolute;
+  top: 8px; right: 8px;
+  padding: 4px 8px;
+  border-radius: 5px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 9px;
+  cursor: pointer;
+  transition: all 0.15s;
+  letter-spacing: 0.04em;
+}
+
+.code-copy-btn:hover { background: rgba(255,255,255,0.1); color: var(--text); }
+
+/* ── Tabs ────────────────────────────────────────────────── */
+.tab-bar {
+  display: flex;
+  border-bottom: 1px solid var(--border);
+  padding: 0 4px;
+  background: var(--surface);
+  flex-shrink: 0;
+}
+
+.tab-btn {
+  padding: 9px 14px;
+  border: none;
+  border-bottom: 2px solid transparent;
+  background: transparent;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 0.15s;
+  letter-spacing: 0.03em;
+  margin-bottom: -1px;
+}
+
+.tab-btn:hover { color: var(--text); }
+.tab-btn.active { color: var(--text); border-bottom-color: var(--accent); }
+
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+
+/* ── Similar bugs ────────────────────────────────────────── */
+.similar-item {
+  padding: 12px 14px;
+  border-radius: 8px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  margin-bottom: 10px;
+}
+
+.similar-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--subtle);
+}
+
+.similar-score {
+  padding: 1px 6px;
+  background: rgba(124,106,247,0.1);
+  border: 1px solid rgba(124,106,247,0.2);
+  color: var(--accent);
+  border-radius: 4px;
+}
+
+/* ── Loading state ───────────────────────────────────────── */
+.loading-overlay {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  flex: 1;
+}
+
+.loading-overlay.visible { display: flex; }
+
+.spinner {
+  width: 28px; height: 28px;
+  border: 2px solid var(--border);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.loading-text {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--muted);
+  animation: blink 1.4s ease-in-out infinite;
+}
+
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+/* ── Attention image ─────────────────────────────────────── */
+.attn-img {
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+
+/* ── Toast ───────────────────────────────────────────────── */
+.toast {
+  position: fixed;
+  bottom: 24px; right: 24px;
+  padding: 10px 18px;
+  background: var(--surface2);
+  border: 1px solid var(--border2);
+  border-radius: 8px;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text);
+  z-index: 999;
+  animation: toastIn 0.2s ease;
+  pointer-events: none;
+}
+
+@keyframes toastIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+</style>
+</head>
+<body>
+
+<div class="shell">
+
+  <!-- Header -->
+  <header>
+    <div class="logo">
+      <div class="logo-icon">
+        <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M2 5l4-3 4 3M6 2v12M10 2v12M2 11l4 3 4-3" stroke="white" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <span class="logo-name">Debugger</span>
+      <span class="logo-badge">AI</span>
+    </div>
+    <div class="header-right">
+      <div class="status-pill">
+        <div class="status-dot"></div>
+        ready
+      </div>
+    </div>
+  </header>
+
+  <!-- Sidebar -->
+  <aside>
+    <div class="nav-item active">
+      <svg viewBox="0 0 16 16" fill="none"><path d="M2 4h12M2 8h8M2 12h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      Debug
+    </div>
+    <div class="nav-item" onclick="">
+      <svg viewBox="0 0 16 16" fill="none"><path d="M8 2v12M2 6l6-4 6 4M3 14h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      History
+    </div>
+    <div class="nav-item" onclick="">
+      <svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5"/><path d="M8 5v3l2 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      Settings
+    </div>
+
+    <div class="sidebar-section">Examples</div>
+
+    <button class="example-btn" data-code="def greet(name)&#10;    print('Hello, ' + name)">
+      def greet(name)
+    </button>
+    <button class="example-btn" data-code="numbers = [1, 2, 3]&#10;print(numbers[10])">
+      numbers[10] → IndexError
+    </button>
+    <button class="example-btn" data-code="def is_even(n):&#10;    return n % 2 == 1">
+      is_even logic bug
+    </button>
+    <button class="example-btn" data-code="def factorial(n)&#10;    if n = 0:&#10;        return 1&#10;    return n * factorial(n-1)">
+      factorial syntax
+    </button>
+  </aside>
+
+  <!-- Main -->
+  <main>
+
+    <!-- Editor pane -->
+    <div class="pane-editor">
+      <div class="pane-bar">
+        <div class="pane-title">
+          <span></span>
+          editor.py
+        </div>
+      </div>
+      <div class="editor-wrapper">
+        <div class="line-numbers" id="line-numbers">1</div>
+        <textarea id="code-input" spellcheck="false" placeholder="# Paste your buggy Python code here...
+# The AI will classify the error, explain it,
+# generate a fix, and show you the diff.
+
+def example():
+    pass
+"></textarea>
+      </div>
+      <div class="editor-footer">
+        <button class="btn-primary" id="debug-btn" onclick="runDebug()">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><polygon points="3,1 11,6 3,11" fill="white"/></svg>
+          Analyze
+        </button>
+        <button class="btn-ghost" onclick="clearAll()">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 2l8 8M10 2l-8 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          Clear
+        </button>
+        <span class="char-count" id="char-count">0 chars</span>
+      </div>
+    </div>
+
+    <!-- Output pane -->
+    <div class="pane-output">
+      <div class="pane-bar">
+        <div class="pane-title">
+          <span style="background:var(--muted)"></span>
+          output
+        </div>
+        <div class="tab-bar" style="border:none;background:transparent;padding:0;">
+          <button class="tab-btn active" onclick="switchTab('analysis')">Analysis</button>
+          <button class="tab-btn" onclick="switchTab('fix')">Fixed</button>
+          <button class="tab-btn" onclick="switchTab('diff')">Diff</button>
+          <button class="tab-btn" onclick="switchTab('similar')">Similar</button>
+          <button class="tab-btn" onclick="switchTab('attention')">Attention</button>
+        </div>
+      </div>
+
+      <!-- Loading -->
+      <div class="loading-overlay" id="loading">
+        <div class="spinner"></div>
+        <div class="loading-text" id="loading-text">Analyzing code...</div>
+      </div>
+
+      <!-- Empty state -->
+      <div class="output-scroll" id="empty-state">
+        <div class="empty-state">
+          <div class="empty-state-icon">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+              <path d="M7 8h8M7 12h5" stroke="#44444f" stroke-width="1.5" stroke-linecap="round"/>
+              <rect x="2" y="3" width="18" height="16" rx="3" stroke="#44444f" stroke-width="1.5"/>
+            </svg>
+          </div>
+          <h3>No analysis yet</h3>
+          <p>Paste your Python code in the editor<br/>and click Analyze to get started.</p>
+        </div>
+      </div>
+
+      <!-- Results -->
+      <div class="output-scroll" id="results" style="display:none;">
+
+        <!-- Analysis tab -->
+        <div class="tab-panel active" id="tab-analysis">
+          <!-- injected by JS -->
+        </div>
+
+        <!-- Fix tab -->
+        <div class="tab-panel" id="tab-fix">
+          <div class="result-card">
+            <div class="card-header" onclick="toggleCard(this)">
+              <div class="card-title-row">
+                <svg viewBox="0 0 12 12" fill="none"><path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                fixed_code.py
+              </div>
+              <svg class="chevron open" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+            </div>
+            <div class="card-body">
+              <div class="code-block">
+                <button class="code-copy-btn" onclick="copyCode('fixed-code')">copy</button>
+                <pre><code class="language-python" id="fixed-code"></code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Diff tab -->
+        <div class="tab-panel" id="tab-diff">
+          <div class="result-card">
+            <div class="card-header" onclick="toggleCard(this)">
+              <div class="card-title-row">
+                <svg viewBox="0 0 12 12" fill="none"><path d="M1 3h10M1 6h6M1 9h8" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+                diff.patch
+              </div>
+              <svg class="chevron open" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+            </div>
+            <div class="card-body">
+              <div class="code-block">
+                <button class="code-copy-btn" onclick="copyCode('diff-code')">copy</button>
+                <pre><code id="diff-code" style="color:#8b949e;"></code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Similar tab -->
+        <div class="tab-panel" id="tab-similar">
+          <div id="similar-list"></div>
+        </div>
+
+        <!-- Attention tab -->
+        <div class="tab-panel" id="tab-attention">
+          <div class="result-card">
+            <div class="card-header" onclick="toggleCard(this)">
+              <div class="card-title-row">
+                <svg viewBox="0 0 12 12" fill="none"><rect x="1" y="1" width="4" height="4" rx="1" stroke="currentColor" stroke-width="1.3"/><rect x="7" y="1" width="4" height="4" rx="1" stroke="currentColor" stroke-width="1.3"/><rect x="1" y="7" width="4" height="4" rx="1" stroke="currentColor" stroke-width="1.3"/><rect x="7" y="7" width="4" height="4" rx="1" stroke="currentColor" stroke-width="1.3"/></svg>
+                Attention Heatmap
+              </div>
+              <svg class="chevron open" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+            </div>
+            <div class="card-body">
+              <img id="attn-img" class="attn-img" src="" alt="Attention heatmap"/>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<script>
+// ── State ─────────────────────────────────────────────────────────────
+let activeTab = 'analysis';
+const LOAD_MSGS = [
+  'Classifying error type…',
+  'Running inference…',
+  'Generating fix…',
+  'Building diff…',
+];
+let loadMsgIdx = 0, loadInterval;
+
+// ── Line numbers ──────────────────────────────────────────────────────
+const codeInput   = document.getElementById('code-input');
+const lineNumbers = document.getElementById('line-numbers');
+const charCount   = document.getElementById('char-count');
+
+function updateLineNumbers() {
+  const lines = codeInput.value.split('\n').length;
+  lineNumbers.innerHTML = Array.from({length: lines}, (_, i) => i + 1).join('<br>');
+  charCount.textContent = codeInput.value.length + ' chars';
+}
+
+codeInput.addEventListener('input', updateLineNumbers);
+codeInput.addEventListener('scroll', () => {
+  lineNumbers.style.top = -codeInput.scrollTop + 'px';
+});
+updateLineNumbers();
+
+// ── Examples ──────────────────────────────────────────────────────────
+document.querySelectorAll('.example-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    codeInput.value = btn.dataset.code.replace(/&#10;/g, '\n');
+    updateLineNumbers();
+  });
+});
+
+// ── Tabs ──────────────────────────────────────────────────────────────
+function switchTab(name) {
+  activeTab = name;
+  document.querySelectorAll('.tab-btn').forEach((b, i) => {
+    const tabs = ['analysis','fix','diff','similar','attention'];
+    b.classList.toggle('active', tabs[i] === name);
+  });
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+}
+
+// ── Toggle cards ──────────────────────────────────────────────────────
+function toggleCard(header) {
+  const body    = header.nextElementSibling;
+  const chevron = header.querySelector('.chevron');
+  const isOpen  = !body.classList.contains('collapsed');
+  body.classList.toggle('collapsed', isOpen);
+  chevron.classList.toggle('open', !isOpen);
+}
+
+// ── Copy code ─────────────────────────────────────────────────────────
+function copyCode(id) {
+  const el  = document.getElementById(id);
+  navigator.clipboard.writeText(el.textContent).then(() => showToast('Copied!'));
+}
+
+function showToast(msg) {
+  const t = document.createElement('div');
+  t.className = 'toast';
+  t.textContent = msg;
+  document.body.appendChild(t);
+  setTimeout(() => t.remove(), 1800);
+}
+
+// ── Clear ─────────────────────────────────────────────────────────────
+function clearAll() {
+  codeInput.value = '';
+  updateLineNumbers();
+  document.getElementById('results').style.display = 'none';
+  document.getElementById('empty-state').style.display = 'flex';
+}
+
+// ── Loading ───────────────────────────────────────────────────────────
+function startLoading() {
+  document.getElementById('results').style.display    = 'none';
+  document.getElementById('empty-state').style.display = 'none';
+  const overlay = document.getElementById('loading');
+  overlay.classList.add('visible');
+  loadMsgIdx = 0;
+  const txt = document.getElementById('loading-text');
+  txt.textContent = LOAD_MSGS[0];
+  loadInterval = setInterval(() => {
+    loadMsgIdx = (loadMsgIdx + 1) % LOAD_MSGS.length;
+    txt.textContent = LOAD_MSGS[loadMsgIdx];
+  }, 1400);
+}
+
+function stopLoading() {
+  document.getElementById('loading').classList.remove('visible');
+  clearInterval(loadInterval);
+}
+
+// ── Render results ────────────────────────────────────────────────────
+function renderResults(data) {
+  // — Analysis tab —
+  const badgeStyle = `background:${data.badge_color}18;color:${data.badge_color};border:1px solid ${data.badge_color}35;`;
+  let scoresHtml = '';
+  for (const [lbl, pct] of Object.entries(data.all_scores)) {
+    const isActive = lbl === data.label;
+    const color    = {
+      'Syntax Error':'#ef4444','Runtime Error':'#f97316',
+      'Logic Bug':'#eab308','Multiple Issues':'#8b5cf6'
+    }[lbl] || '#71717a';
+    scoresHtml += `
+      <div class="score-row">
+        <span class="score-lbl ${isActive?'active':''}">${lbl}</span>
+        <div class="score-bar-wrap">
+          <div class="score-bar-fill" style="width:${pct}%;background:${color};opacity:${isActive?1:0.3};"></div>
+        </div>
+        <span class="score-pct ${isActive?'active':''}">${pct}%</span>
+      </div>`;
+  }
+
+  document.getElementById('tab-analysis').innerHTML = `
+    <div class="result-card">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-title-row">
+          <svg viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="1.3"/><path d="M6 4v3M6 8.5v.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+          Classification
+        </div>
+        <svg class="chevron open" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+      </div>
+      <div class="card-body">
+        <div class="confidence-row">
+          <span class="bug-badge" style="${badgeStyle}">${data.label}</span>
+          <span class="confidence-label">${data.confidence}% confidence</span>
+        </div>
+        <div class="explanation-block">${data.explanation}</div>
+        <div class="scores-grid">${scoresHtml}</div>
+      </div>
+    </div>`;
+
+  // — Fix tab —
+  document.getElementById('fixed-code').textContent = data.fixed_code || '// No fix generated.';
+  hljs.highlightElement(document.getElementById('fixed-code'));
+
+  // — Diff tab —
+  const diffEl = document.getElementById('diff-code');
+  diffEl.textContent = data.diff;
+  diffEl.innerHTML   = diffEl.textContent
+    .split('\n')
+    .map(l => {
+      if (l.startsWith('+')) return `<span style="color:#3fb950">${l}</span>`;
+      if (l.startsWith('-')) return `<span style="color:#f85149">${l}</span>`;
+      if (l.startsWith('@')) return `<span style="color:#79c0ff">${l}</span>`;
+      return `<span style="color:#8b949e">${l}</span>`;
+    })
+    .join('\n');
+
+  // — Similar tab —
+  let simHtml = '';
+  if (!data.similar || !data.similar.length) {
+    simHtml = `<div style="font-family:var(--mono);font-size:11px;color:var(--subtle);padding:20px 0;">// No similar bugs in index yet.<br>// Index grows as you debug more code.</div>`;
+  } else {
+    data.similar.forEach(b => {
+      simHtml += `
+        <div class="similar-item">
+          <div class="similar-meta">
+            <span>#${b.rank}</span>
+            <span class="similar-score">${b.score}</span>
+            <span>${b.explanation.slice(0,80)}…</span>
+          </div>
+          <div class="code-block" style="margin-top:0">
+            <pre><code class="language-python">${escapeHtml(b.code)}</code></pre>
+          </div>
+        </div>`;
+    });
+  }
+  document.getElementById('similar-list').innerHTML = simHtml;
+  document.querySelectorAll('#similar-list code').forEach(el => hljs.highlightElement(el));
+
+  // — Attention tab —
+  document.getElementById('attn-img').src = data.attention;
+}
+
+function escapeHtml(s) {
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+// ── Main debug call ───────────────────────────────────────────────────
+async function runDebug() {
+  const code = codeInput.value.trim();
+  if (!code) { showToast('Paste some code first'); return; }
+
+  const btn = document.getElementById('debug-btn');
+  btn.disabled = true;
+  startLoading();
+  switchTab('analysis');
+
+  try {
+    const res  = await fetch('/api/debug', {
+      method:  'POST',
+      headers: {'Content-Type': 'application/json'},
+      body:    JSON.stringify({code}),
+    });
+    const data = await res.json();
+    if (data.error) { showToast('Error: ' + data.error); return; }
+    stopLoading();
+    renderResults(data);
+    document.getElementById('results').style.display = 'flex';
+    document.getElementById('empty-state').style.display = 'none';
+  } catch (e) {
+    showToast('Request failed');
+    stopLoading();
+    document.getElementById('empty-state').style.display = 'flex';
+  } finally {
+    btn.disabled = false;
+  }
+}
+
+// Ctrl+Enter shortcut
+document.addEventListener('keydown', e => {
+  if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') runDebug();
+});
+</script>
+</body>
+</html>

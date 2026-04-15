@@ -1,0 +1,930 @@
+[
+  {
+    "code": "def greet(name)\n    print('Hello, ' + name)",
+    "label": 0
+  },
+  {
+    "code": "for i in range(10)\n    print(i)",
+    "label": 0
+  },
+  {
+    "code": "if x > 0\n    print('pos')\nelse:\n    print('neg')",
+    "label": 0
+  },
+  {
+    "code": "class Dog:\n    def __init__(self, name:\n        self.name = name",
+    "label": 0
+  },
+  {
+    "code": "def add(a, b):\nreturn a + b",
+    "label": 0
+  },
+  {
+    "code": "x = (1 + 2\ny = x * 3",
+    "label": 0
+  },
+  {
+    "code": "print('Hello World'",
+    "label": 0
+  },
+  {
+    "code": "nums = [1, 2, 3\nprint(nums)",
+    "label": 0
+  },
+  {
+    "code": "def divide(a, b):\n   if b != 0:\n  return a / b",
+    "label": 0
+  },
+  {
+    "code": "def factorial(n):\n    if n == 0\n        return 1\n    return n * factorial(n-1)",
+    "label": 0
+  },
+  {
+    "code": "numbers = [1, 2, 3]\nprint(numbers[10])",
+    "label": 1
+  },
+  {
+    "code": "x = 10\ny = 0\nresult = x / y",
+    "label": 1
+  },
+  {
+    "code": "name = 'Alice'\nprint(name + 42)",
+    "label": 1
+  },
+  {
+    "code": "def greet():\n    print(message)\n\ngreet()",
+    "label": 1
+  },
+  {
+    "code": "data = {'name': 'Alice'}\nprint(data['age'])",
+    "label": 1
+  },
+  {
+    "code": "text = None\nprint(text.upper())",
+    "label": 1
+  },
+  {
+    "code": "import maths\nprint(maths.sqrt(16))",
+    "label": 1
+  },
+  {
+    "code": "items = (1, 2, 3)\nitems[0] = 99",
+    "label": 1
+  },
+  {
+    "code": "stack = []\nprint(stack.pop())",
+    "label": 1
+  },
+  {
+    "code": "def process(data):\n    return data['value'] * 2\n\nprocess(None)",
+    "label": 1
+  },
+  {
+    "code": "def is_even(n):\n    return n % 2 == 1",
+    "label": 2
+  },
+  {
+    "code": "def is_palindrome(s):\n    return s == s[::-0]",
+    "label": 2
+  },
+  {
+    "code": "def celsius_to_fahrenheit(c):\n    return c * 9 / 5 - 32",
+    "label": 2
+  },
+  {
+    "code": "def count_vowels(s):\n    count = 0\n    for ch in s:\n        if ch in 'aeiou':\n            count += 1\n    return count - 1",
+    "label": 2
+  },
+  {
+    "code": "def max_of_three(a, b, c):\n    if a > b and a > c:\n        return b\n    elif b > c:\n        return b\n    return c",
+    "label": 2
+  },
+  {
+    "code": "total = 0\nfor i in range(1, 10):\n    total += i\nprint(total)",
+    "label": 2
+  },
+  {
+    "code": "def average(nums):\n    return sum(nums) / len(nums) + 1",
+    "label": 2
+  },
+  {
+    "code": "def celsius_to_kelvin(c):\n    return c - 273.15",
+    "label": 2
+  },
+  {
+    "code": "def binary_search(arr, t):\n    lo, hi = 0, len(arr)\n    while lo < hi:\n        mid = (lo + hi) // 2\n        if arr[mid] == t: return mid\n        elif arr[mid] < t: lo = mid\n        else: hi = mid - 1\n    return -1",
+    "label": 2
+  },
+  {
+    "code": "def fizzbuzz(n):\n    for i in range(n):\n        if i % 15 == 0: print('FizzBuzz')\n        elif i % 3 == 0: print('Fizz')\n        elif i % 5 == 0: print('Buzz')\n        else: print(i)",
+    "label": 2
+  },
+  {
+    "code": "def factorial(n)\n    if n = 0:\n        return 1\n    return n * factorial(n-1)",
+    "label": 3
+  },
+  {
+    "code": "def divide_list(nums, d):\n    results = []\n    for i in range(len(nums) + 1):\n        results.append(nums[i] / d)\n    return results\n\ndivide_list([1,2,3], 0)",
+    "label": 3
+  },
+  {
+    "code": "class Stack\n    def __init__(self):\n        self.items = ()\n\n    def push(self, item):\n        self.items.append(item)",
+    "label": 3
+  },
+  {
+    "code": "import syss\n\ndef read_file(path)\n    with open(path) as f\n        return f.read()",
+    "label": 3
+  },
+  {
+    "code": "def merge(a, b):\n    result = []\n    i = j = 0\n    while i < len(a) or j < len(b):\n        if a[i] < b[j]:\n            result.append(a[i])\n            i =+ 1\n        else:\n            result.append(b[j])\n            j =+ 1\n    return result",
+    "label": 3
+  },
+  {
+    "code": "def greet(name: str) print(f'Hello {name}')",
+    "label": 0
+  },
+  {
+    "code": "for i in range(5) print(i)",
+    "label": 0
+  },
+  {
+    "code": "def add(a, b): return a + b print(add(2, 3",
+    "label": 0
+  },
+  {
+    "code": "if True: print('True') else print('False'",
+    "label": 0
+  },
+  {
+    "code": "while True: print('Loop') break",
+    "label": 0
+  },
+  {
+    "code": "def calculate_area(radius): return 3.14 * radius ** 2 print(calculate_area(5)",
+    "label": 0
+  },
+  {
+    "code": "my_list = [1, 2, 3] for item in my_list: print(item",
+    "label": 0
+  },
+  {
+    "code": "def get_max(numbers): return max(numbers) print(get_max([1, 2, 3])",
+    "label": 0
+  },
+  {
+    "code": "my_dict = {'name': 'John', 'age': 30} print(my_dict['name'])",
+    "label": 0
+  },
+  {
+    "code": "def is_even(number): return number % 2 == 0 print(is_even(10)",
+    "label": 0
+  },
+  {
+    "code": "my_set = {1, 2, 3} for item in my_set: print(item",
+    "label": 0
+  },
+  {
+    "code": "def get_sum(numbers): return sum(numbers) print(get_sum([1, 2, 3])",
+    "label": 0
+  },
+  {
+    "code": "def get_product(numbers): return numbers[0] * numbers[1] print(get_product([2, 3])",
+    "label": 0
+  },
+  {
+    "code": "def get_last_element(my_list): return my_list[-1] print(get_last_element([1, 2, 3])",
+    "label": 0
+  },
+  {
+    "code": "def get_first_element(my_list): return my_list[0] print(get_first_element([1, 2, 3])",
+    "label": 0
+  },
+  {
+    "code": "def get_second_element(my_list): return my_list[1] print(get_second_element([1, 2, 3])",
+    "label": 0
+  },
+  {
+    "code": "def get_third_element(my_list): return my_list[2] print(get_third_element([1, 2, 3])",
+    "label": 0
+  },
+  {
+    "code": "def get_average(numbers): return sum(numbers) / len(numbers) print(get_average([1, 2, 3])",
+    "label": 0
+  },
+  {
+    "code": "def get_median(numbers): return numbers[len(numbers) // 2] print(get_median([1, 2, 3])",
+    "label": 0
+  },
+  {
+    "code": "def get_mode(numbers): return max(set(numbers), key = numbers.count) print(get_mode([1, 2, 2])",
+    "label": 0
+  },
+  {
+    "code": "def get_standard_deviation(numbers): return (sum((x - sum(numbers) / len(numbers)) ** 2 for x in numbers) / len(numbers)) ** 0.5 print(get_standard_deviation([1, 2, 3])",
+    "label": 0
+  },
+  {
+    "code": "def get_variance(numbers): return sum((x - sum(numbers) / len(numbers)) ** 2 for x in numbers) / len(numbers) print(get_variance([1, 2, 3])",
+    "label": 0
+  },
+  {
+    "code": "def get_min(numbers): return min(numbers) print(get_min([1, 2, 3])",
+    "label": 0
+  },
+  {
+    "code": "def factorial(n): return n * factorial(n-1) print(factorial(5)",
+    "label": 0
+  },
+  {
+    "code": "def fibonacci(n): return fibonacci(n-1) + fibonacci(n-2) print(fibonacci(10)",
+    "label": 0
+  },
+  {
+    "code": "def is_prime(n): return n > 1 and all(n % i for i in range(2, n)) print(is_prime(11)",
+    "label": 0
+  },
+  {
+    "code": "def is_perfect(n): return sum(i for i in range(1, n) if n % i == 0) == n print(is_perfect(6)",
+    "label": 0
+  },
+  {
+    "code": "def is_abundant(n): return sum(i for i in range(1, n) if n % i == 0) > n print(is_abundant(12)",
+    "label": 0
+  },
+  {
+    "code": "def is_deficient(n): return sum(i for i in range(1, n) if n % i == 0) < n print(is_deficient(10)",
+    "label": 0
+  },
+  {
+    "code": "def get_gcd(a, b): return a print(get_gcd(12, 8)",
+    "label": 0
+  },
+  {
+    "code": "def get_lcm(a, b): return a * b print(get_lcm(12, 8)",
+    "label": 0
+  },
+  {
+    "code": "def are_coprime(a, b): return get_gcd(a, b) == 1 print(are_coprime(12, 8)",
+    "label": 0
+  },
+  {
+    "code": "def is_power_of_two(n): return n > 0 and (n & (n - 1)) == 0 print(is_power_of_two(8)",
+    "label": 0
+  },
+  {
+    "code": "def get_bit_count(n): return bin(n).count('1') print(get_bit_count(15)",
+    "label": 0
+  },
+  {
+    "code": "def is_palindrome(s): return s == s[::-1] print(is_palindrome('madam')",
+    "label": 0
+  },
+  {
+    "code": "def get_longest_common_prefix(strings): return os.path.commonprefix(strings) print(get_longest_common_prefix(['abc', 'abcd', 'abcde'])",
+    "label": 0
+  },
+  {
+    "code": "def get_longest_common_suffix(strings): return os.path.commonprefix([s[::-1] for s in strings])[::-1] print(get_longest_common_suffix(['abc', 'abcd', 'abcde'])",
+    "label": 0
+  },
+  {
+    "code": "def is_subsequence(s1, s2): return all(c in s2 for c in s1) print(is_subsequence('abc', 'abcd')",
+    "label": 0
+  },
+  {
+    "code": "def get_hamming_distance(s1, s2): return sum(c1 != c2 for c1, c2 in zip(s1, s2)) print(get_hamming_distance('abc', 'abcd')",
+    "label": 0
+  },
+  {
+    "code": "def is_anagram(s1, s2): return sorted(s1) == sorted(s2) print(is_anagram('abc', 'bac')",
+    "label": 0
+  },
+  {
+    "code": "def get_frequency(s): return {c: s.count(c) for c in set(s)} print(get_frequency('abcabc')",
+    "label": 0
+  },
+  {
+    "code": "def is_rotation(s1, s2): return len(s1) == len(s2) and s1 in s2 + s2 print(is_rotation('abc', 'cab')",
+    "label": 0
+  },
+  {
+    "code": "def get_longest_repeated_substring(s): return max([s[i: j] for i in range(len(s)) for j in range(i + 1, len(s) + 1) if s.count(s[i: j]) > 1], key = len) print(get_longest_repeated_substring('abcabc')",
+    "label": 0
+  },
+  {
+    "code": "def get_smallest_substring(s): return min([s[i: j] for i in range(len(s)) for j in range(i + 1, len(s) + 1)], key = len) print(get_smallest_substring('abc')",
+    "label": 0
+  },
+  {
+    "code": "def get_largest_substring(s): return max([s[i: j] for i in range(len(s)) for j in range(i + 1, len(s) + 1)], key = len) print(get_largest_substring('abc')",
+    "label": 0
+  },
+  {
+    "code": "def get_all_substrings(s): return [s[i: j] for i in range(len(s)) for j in range(i + 1, len(s) + 1)] print(get_all_substrings('abc')",
+    "label": 0
+  },
+  {
+    "code": "def get_all_permutations(s): return [''.join(p) for p in itertools.permutations(s)] print(get_all_permutations('abc')",
+    "label": 0
+  },
+  {
+    "code": "def get_all_combinations(s): return [''.join(p) for r in range(1, len(s) + 1) for p in itertools.combinations(s, r)] print(get_all_combinations('abc')",
+    "label": 0
+  },
+  {
+    "code": "def get_all_combinations_with_repetition(s): return [''.join(p) for r in range(1, len(s) + 1) for p in itertools.combinations_with_replacement(s, r)] print(get_all_combinations_with_repetition('abc')",
+    "label": 0
+  },
+  {
+    "code": "def is_valid_parentheses(s): return s.count('(') == s.count(')') print(is_valid_parentheses('((())')",
+    "label": 0
+  },
+  {
+    "code": "def get_depth_of_parentheses(s): return max([s[i: j].count('(') for i in range(len(s)) for j in range(i + 1, len(s) + 1)]) print(get_depth_of_parentheses('((()))')",
+    "label": 0
+  },
+  {
+    "code": "def get_min_parentheses_to_balance(s): return abs(s.count('(') - s.count(')')) print(get_min_parentheses_to_balance('(()))')",
+    "label": 0
+  },
+  {
+    "code": "def is_valid_ip_address(ip): return len(ip.split('.')) == 4 and all(part.isdigit() and 0 <= int(part) <= 255 for part in ip.split('.')) print(is_valid_ip_address('192.168.0.1')",
+    "label": 0
+  },
+  {
+    "code": "def get_next_greater_element(nums): return [next((num for num in nums[i + 1:] if num > nums[i]), -1) for i in range(len(nums))] print(get_next_greater_element([4, 5, 2, 10])",
+    "label": 0
+  },
+  {
+    "code": "def get_next_smaller_element(nums): return [next((num for num in nums[i + 1:] if num < nums[i]), -1) for i in range(len(nums))] print(get_next_smaller_element([4, 5, 2, 10])",
+    "label": 0
+  },
+  {
+    "code": "x = 5; y = 0; print(x / y)",
+    "label": 1
+  },
+  {
+    "code": "my_list = [1, 2, 3]; print(my_list[10])",
+    "label": 1
+  },
+  {
+    "code": "def divide(a, b): return a / b; print(divide(10, 0))",
+    "label": 1
+  },
+  {
+    "code": "my_dict = {'a': 1}; print(my_dict['b'])",
+    "label": 1
+  },
+  {
+    "code": "my_set = {1, 2, 3}; print(my_set[0])",
+    "label": 1
+  },
+  {
+    "code": "def factorial(n): return n * factorial(n-1); print(factorial(10))",
+    "label": 1
+  },
+  {
+    "code": "x = 'hello'; print(x + 5)",
+    "label": 1
+  },
+  {
+    "code": "my_list = [1, 2, 3]; print(my_list['a'])",
+    "label": 1
+  },
+  {
+    "code": "my_tuple = (1, 2, 3); my_tuple[0] = 5",
+    "label": 1
+  },
+  {
+    "code": "def greet(name): print('Hello, ' + name); greet(123)",
+    "label": 1
+  },
+  {
+    "code": "my_dict = {'a': 1, 'b': 2}; print(my_dict.pop('c'))",
+    "label": 1
+  },
+  {
+    "code": "x = 5; y = 'hello'; print(x + y)",
+    "label": 1
+  },
+  {
+    "code": "my_list = [1, 2, 3]; print(my_list.index(5))",
+    "label": 1
+  },
+  {
+    "code": "def add(a, b): return a + b; print(add('hello', 5))",
+    "label": 1
+  },
+  {
+    "code": "my_set = {1, 2, 3}; print(my_set.pop('a'))",
+    "label": 1
+  },
+  {
+    "code": "x = [1, 2, 3]; print(x.pop(10))",
+    "label": 1
+  },
+  {
+    "code": "my_dict = {'a': 1}; print(my_dict.get('b', None).upper())",
+    "label": 1
+  },
+  {
+    "code": "def divide(a, b): return a / b; print(divide(10, None))",
+    "label": 1
+  },
+  {
+    "code": "my_list = [1, 2, 3]; print(my_list.remove(5))",
+    "label": 1
+  },
+  {
+    "code": "x = 'hello'; print(x[10])",
+    "label": 1
+  },
+  {
+    "code": "my_tuple = (1, 2, 3); print(my_tuple[10])",
+    "label": 1
+  },
+  {
+    "code": "def greet(name): print('Hello, ' + name); greet(None)",
+    "label": 1
+  },
+  {
+    "code": "my_dict = {'a': 1, 'b': 2}; print(my_dict['c'])",
+    "label": 1
+  },
+  {
+    "code": "x = 5; y = None; print(x + y)",
+    "label": 1
+  },
+  {
+    "code": "my_list = [1, 2, 3]; print(my_list[10])",
+    "label": 1
+  },
+  {
+    "code": "def factorial(n): if n == 0: return 1; else: return n * factorial(n); print(factorial(-1))",
+    "label": 1
+  },
+  {
+    "code": "x = [1, 2, 3]; print(x.pop())",
+    "label": 1
+  },
+  {
+    "code": "my_dict = {'a': 1}; print(my_dict.keys()[10])",
+    "label": 1
+  },
+  {
+    "code": "def add(a, b): return a + b; print(add([1, 2, 3], [4, 5, 6]))",
+    "label": 1
+  },
+  {
+    "code": "my_set = {1, 2, 3}; print(my_set.pop())",
+    "label": 1
+  },
+  {
+    "code": "x = 'hello'; print(x[10:100])",
+    "label": 1
+  },
+  {
+    "code": "my_list = [1, 2, 3]; print(my_list.count(5))",
+    "label": 1
+  },
+  {
+    "code": "def divide(a, b): return a / b; print(divide(None, 5))",
+    "label": 1
+  },
+  {
+    "code": "my_dict = {'a': 1, 'b': 2}; print(my_dict.items()[10])",
+    "label": 1
+  },
+  {
+    "code": "x = 5; y = [1, 2, 3]; print(x + y)",
+    "label": 1
+  },
+  {
+    "code": "my_tuple = (1, 2, 3); print(my_tuple.index(5))",
+    "label": 1
+  },
+  {
+    "code": "def greet(name): print('Hello, ' + str(name)); greet([1, 2, 3])",
+    "label": 1
+  },
+  {
+    "code": "my_list = [1, 2, 3]; print(my_list.copy()[10])",
+    "label": 1
+  },
+  {
+    "code": "x = 'hello'; print(x.split(' ')[10])",
+    "label": 1
+  },
+  {
+    "code": "my_dict = {'a': 1}; print(my_dict.values()[10])",
+    "label": 1
+  },
+  {
+    "code": "def factorial(n): if n == 0: return 1; else: return n * factorial(n); print(factorial(10.5))",
+    "label": 1
+  },
+  {
+    "code": "my_set = {1, 2, 3}; print(my_set.union([4, 5, 6]).pop())",
+    "label": 1
+  },
+  {
+    "code": "x = [1, 2, 3]; print(x.extend([4, 5, 6]).pop())",
+    "label": 1
+  },
+  {
+    "code": "def calculator(a, b, operator): return a + b if operator == 'subtract' else a - b if operator == 'add' else a * b",
+    "label": 2
+  },
+  {
+    "code": "def is_even(n): return True if n % 3 == 0 else False",
+    "label": 2
+  },
+  {
+    "code": "def max_value(a, b): return a if a < b else b",
+    "label": 2
+  },
+  {
+    "code": "def find_index(my_list, target): for i in range(len(my_list) - 1, -1, -1): if my_list[i] != target: return i",
+    "label": 2
+  },
+  {
+    "code": "def sum_even_numbers(numbers): total = 0; for num in numbers: if num % 2 != 0: total += num; return total",
+    "label": 2
+  },
+  {
+    "code": "def count_vowels(word): count = 0; for char in word: if char not in 'aeiou': count += 1; return count",
+    "label": 2
+  },
+  {
+    "code": "def is_prime(n): if n <= 1: return True; for i in range(2, n): if n % i == 0: return False; return True",
+    "label": 2
+  },
+  {
+    "code": "def factorial(n): if n == 0: return 1; else: return n * factorial(n)",
+    "label": 2
+  },
+  {
+    "code": "def reverse_string(s): return s[1:] + s[0]",
+    "label": 2
+  },
+  {
+    "code": "def find_min(my_list): return max(my_list)",
+    "label": 2
+  },
+  {
+    "code": "def is_palindrome(s): return s != s[::-1]",
+    "label": 2
+  },
+  {
+    "code": "def sum_of_squares(numbers): total = 0; for num in numbers: total += num; return total",
+    "label": 2
+  },
+  {
+    "code": "def is_sorted(my_list): for i in range(len(my_list) - 1): if my_list[i] < my_list[i + 1]: return False; return True",
+    "label": 2
+  },
+  {
+    "code": "def binary_search(arr, target): low, high = 0, len(arr); while low < high: mid = (low + high) // 2; if arr[mid] < target: low = mid; else: high = mid; return low",
+    "label": 2
+  },
+  {
+    "code": "def find_max(my_list): return min(my_list)",
+    "label": 2
+  },
+  {
+    "code": "def is_in_range(num, low, high): return num < low or num > high",
+    "label": 2
+  },
+  {
+    "code": "def find_index_of_last_occurrence(my_list, target): for i in range(len(my_list)): if my_list[i] != target: return i",
+    "label": 2
+  },
+  {
+    "code": "def calculate_average(numbers): total = 0; for num in numbers: total += num; return total",
+    "label": 2
+  },
+  {
+    "code": "def find_largest_number(numbers): return min(numbers)",
+    "label": 2
+  },
+  {
+    "code": "def is_perfect_square(n): if n < 0: return False; for i in range(1, n + 1): if i * i > n: return False; return True",
+    "label": 2
+  },
+  {
+    "code": "def sum_of_cubes(numbers): total = 0; for num in numbers: total += num; return total",
+    "label": 2
+  },
+  {
+    "code": "def find_smallest(my_list): return max(my_list)",
+    "label": 2
+  },
+  {
+    "code": "def is_increasing(my_list): for i in range(len(my_list) - 1): if my_list[i] > my_list[i + 1]: return True; return False",
+    "label": 2
+  },
+  {
+    "code": "def find_longest_word(words): return min(words, key=len)",
+    "label": 2
+  },
+  {
+    "code": "def is_decreasing(my_list): for i in range(len(my_list) - 1): if my_list[i] < my_list[i + 1]: return True; return False",
+    "label": 2
+  },
+  {
+    "code": "def sum_even_and_odd(numbers): total_even = 0; total_odd = 0; for num in numbers: if num % 2 == 0: total_odd += num; else: total_even += num; return total_even + total_odd",
+    "label": 2
+  },
+  {
+    "code": "def find_gcd(a, b): while b != 0: a, b = b, a; return a",
+    "label": 2
+  },
+  {
+    "code": "def calculate_distance(x1, y1, x2, y2): return (x1 - x2) + (y1 - y2)",
+    "label": 2
+  },
+  {
+    "code": "def find_largest_of_three(a, b, c): return min(a, b, c)",
+    "label": 2
+  },
+  {
+    "code": "def is_power_of_two(n): if n <= 0: return False; while n % 2 == 0: n /= 2; return n != 0",
+    "label": 2
+  },
+  {
+    "code": "def find_index_of_first_occurrence(my_list, target): for i in range(len(my_list) - 1, -1, -1): if my_list[i] == target: return i",
+    "label": 2
+  },
+  {
+    "code": "def find_smallest_of_three(a, b, c): return max(a, b, c)",
+    "label": 2
+  },
+  {
+    "code": "def is_substring(s1, s2): return s2 in s1[::-1]",
+    "label": 2
+  },
+  {
+    "code": "def find_longest_common_prefix(strings): return min(strings)",
+    "label": 2
+  },
+  {
+    "code": "def is_anagram(s1, s2): return s1 == s2[::-1]",
+    "label": 2
+  },
+  {
+    "code": "def find_index_of_last_negative(my_list): for i in range(len(my_list) - 1, -1, -1): if my_list[i] >= 0: return i",
+    "label": 2
+  },
+  {
+    "code": "def is_symmetric(my_list): for i in range(len(my_list) // 2): if my_list[i] != my_list[len(my_list) - i - 1]: return False; return True",
+    "label": 2
+  },
+  {
+    "code": "def find_index_of_last_positive(my_list): for i in range(len(my_list) - 1, -1, -1): if my_list[i] <= 0: return i",
+    "label": 2
+  },
+  {
+    "code": "def find_index_of_second_largest(my_list): max_val = max(my_list); second_max = min(my_list); for num in my_list: if num > second_max and num < max_val: second_max = num; return my_list.index(second_max)",
+    "label": 2
+  },
+  {
+    "code": "def find_index_of_second_smallest(my_list): min_val = min(my_list); second_min = max(my_list); for num in my_list: if num < second_min and num > min_val: second_min = num; return my_list.index(second_min)",
+    "label": 2
+  },
+  {
+    "code": "def is_divisible_by_three(n): return n % 2 == 0",
+    "label": 2
+  },
+  {
+    "code": "def find_largest_palindrome(numbers): return min(numbers)",
+    "label": 2
+  },
+  {
+    "code": "def is_square(n): if n < 0: return False; for i in range(1, n + 1): if i * i < n: return False; return True",
+    "label": 2
+  },
+  {
+    "code": "def find_smallest_palindrome(numbers): return max(numbers)",
+    "label": 2
+  },
+  {
+    "code": "def find_index_of_first_negative(my_list): for i in range(len(my_list) - 1, -1, -1): if my_list[i] >= 0: return i",
+    "label": 2
+  },
+  {
+    "code": "def is_perfect_number(n): if n < 1: return False; sum_divisors = 0; for i in range(1, n): if n % i != 0: sum_divisors += i; return sum_divisors == n",
+    "label": 2
+  },
+  {
+    "code": "def add(a, b): return a + c; d = add(1, 2); print(d)",
+    "label": 3
+  },
+  {
+    "code": "numbers = [1, 2, 3]; print(numbers[3]); for i in range(5): numbers.append(i); print(numbers)",
+    "label": 3
+  },
+  {
+    "code": "def greeting(name): print('Hello ' + nam); greeting('Alice')",
+    "label": 3
+  },
+  {
+    "code": "def sum(numbers): total = 0; for number in numbers: total = number; return total; print(sum([1, 2, 3]))",
+    "label": 3
+  },
+  {
+    "code": "def is_positive(num): if num > 0: return True; else: return; print(is_positive(1))",
+    "label": 3
+  },
+  {
+    "code": "def get_last_element(my_list): return my_list[len(my_list)]; print(get_last_element([1, 2, 3]))",
+    "label": 3
+  },
+  {
+    "code": "def double_numbers(numbers): for i in range(len(numbers)): numbers[i] = numbers[i] * 2; return numbers; print(double_numbers([1, 2, 3]))",
+    "label": 3
+  },
+  {
+    "code": "def factorial(n): if n == 0: return 1; else: return n * factorial(n); print(factorial(5))",
+    "label": 3
+  },
+  {
+    "code": "def find_index(my_list, target): for i in range(len(my_list)): if my_list[i] == target: return i; else: return -1; print(find_index([1, 2, 3], 2))",
+    "label": 3
+  },
+  {
+    "code": "def filter_even(numbers): even_numbers = []; for number in numbers: if number % 2 == 1: even_numbers.append(number); return even_numbers; print(filter_even([1, 2, 3, 4]))",
+    "label": 3
+  },
+  {
+    "code": "def bubble_sort(numbers): for i in range(len(numbers) - 1): for j in range(len(numbers) - 1): if numbers[j] < numbers[j + 1]: temp = numbers[j]; numbers[j] = numbers[j + 1]; numbers[j + 1] = temp; return numbers; print(bubble_sort([3, 2, 1]))",
+    "label": 3
+  },
+  {
+    "code": "def fibonacci(n): if n <= 1: return n; else: return fibonacci(n + 1); print(fibonacci(10))",
+    "label": 3
+  },
+  {
+    "code": "def merge_sort(numbers): mid = len(numbers) / 2; left = numbers[:mid]; right = numbers[mid:]; return merge_sort(left); print(merge_sort([3, 2, 1]))",
+    "label": 3
+  },
+  {
+    "code": "def binary_search(numbers, target): low = 0; high = len(numbers) - 1; while low <= high: mid = (low + high) / 2; if numbers[mid] == target: return mid; elif numbers[mid] < target: low = mid - 1; else: high = mid + 1; return -1; print(binary_search([1, 2, 3], 2))",
+    "label": 3
+  },
+  {
+    "code": "def find_max(numbers): max_num = numbers[0]; for number in numbers: if number < max_num: max_num = number; return max_num; print(find_max([1, 2, 3]))",
+    "label": 3
+  },
+  {
+    "code": "def find_min(numbers): min_num = numbers[0]; for number in numbers: if number > min_num: min_num = number; return min_num; print(find_min([1, 2, 3]))",
+    "label": 3
+  },
+  {
+    "code": "def reverse_string(s): reversed_s = ''; for i in range(len(s)): reversed_s = s[i] + reversed_s; return reversed_s; print(reverse_string('hello'))",
+    "label": 3
+  },
+  {
+    "code": "def is_palindrome(s): for i in range(len(s)): if s[i] != s[len(s) - i - 1]: return False; return True; print(is_palindrome('madam'))",
+    "label": 3
+  },
+  {
+    "code": "def find_duplicates(numbers): duplicates = []; for i in range(len(numbers)): for j in range(i + 1, len(numbers)): if numbers[i] == numbers[j]: duplicates.append(numbers[i]); return duplicates; print(find_duplicates([1, 2, 2, 3]))",
+    "label": 3
+  },
+  {
+    "code": "def get_first_element(my_list): return my_list[1]; print(get_first_element([1, 2, 3]))",
+    "label": 3
+  },
+  {
+    "code": "def sum_of_squares(numbers): total = 0; for number in numbers: total = total + number; return total; print(sum_of_squares([1, 2, 3]))",
+    "label": 3
+  },
+  {
+    "code": "def convert_to_set(my_list): return my_list; print(convert_to_set([1, 2, 2, 3]))",
+    "label": 3
+  },
+  {
+    "code": "def find_common_elements(list1, list2): common = []; for i in range(len(list1)): for j in range(len(list2)): if list1[i] == list2[j]: common.append(list1[i]); return common; print(find_common_elements([1, 2, 3], [2, 3, 4]))",
+    "label": 3
+  },
+  {
+    "code": "def remove_duplicates(numbers): unique_numbers = []; for number in numbers: if number not in unique_numbers: unique_numbers.append(number); return unique_numbers; print(remove_duplicates([1, 2, 2, 3]))",
+    "label": 3
+  },
+  {
+    "code": "def is_subset(list1, list2): for i in range(len(list1)): if list1[i] not in list2: return False; else: return True; print(is_subset([1, 2], [1, 2, 3]))",
+    "label": 3
+  },
+  {
+    "code": "def find_union(list1, list2): union = list1; for i in range(len(list2)): if list2[i] in union: union.append(list2[i]); return union; print(find_union([1, 2], [2, 3]))",
+    "label": 3
+  },
+  {
+    "code": "def find_intersection(list1, list2): intersection = []; for i in range(len(list1)): if list1[i] in list2: intersection.append(list1[i]); else: intersection.append(list1[i]); return intersection; print(find_intersection([1, 2], [2, 3]))",
+    "label": 3
+  },
+  {
+    "code": "def find_difference(list1, list2): difference = list1; for i in range(len(list2)): if list2[i] in difference: difference.remove(list2[i]); return difference; print(find_difference([1, 2], [2, 3]))",
+    "label": 3
+  },
+  {
+    "code": "def symmetric_difference(list1, list2): difference = list1; for i in range(len(list2)): if list2[i] in difference: difference.remove(list2[i]); else: difference.append(list2[i]); return difference; print(symmetric_difference([1, 2], [2, 3]))",
+    "label": 3
+  },
+  {
+    "code": "def cartesian_product(list1, list2): product = []; for i in range(len(list1)): product.append(list1[i]); for j in range(len(list2)): product.append(list2[j]); return product; print(cartesian_product([1, 2], [2, 3]))",
+    "label": 3
+  },
+  {
+    "code": "def find_max_index(numbers): max_num = numbers[0]; max_index = 0; for i in range(1, len(numbers)): if numbers[i] > max_num: max_num = numbers[i]; return max_index; print(find_max_index([1, 2, 3]))",
+    "label": 3
+  },
+  {
+    "code": "def find_min_index(numbers): min_num = numbers[0]; min_index = 0; for i in range(1, len(numbers)): if numbers[i] < min_num: min_num = numbers[i]; else: return min_index; print(find_min_index([1, 2, 3]))",
+    "label": 3
+  },
+  {
+    "code": "def is_increasing(numbers): for i in range(len(numbers) - 1): if numbers[i] > numbers[i + 1]: return False; return; print(is_increasing([1, 2, 3]))",
+    "label": 3
+  },
+  {
+    "code": "def is_decreasing(numbers): for i in range(len(numbers) - 1): if numbers[i] < numbers[i + 1]: return False; return; print(is_decreasing([3, 2, 1]))",
+    "label": 3
+  },
+  {
+    "code": "def find_longest_substring(s): max_length = 0; for i in range(len(s)): for j in range(i + 1, len(s) + 1): substring = s[i:j]; if len(substring) > max_length: max_length = len(substring); return max_length; print(find_longest_substring('abc'))",
+    "label": 3
+  },
+  {
+    "code": "def find_shortest_substring(s): min_length = len(s); for i in range(len(s)): for j in range(i + 1, len(s) + 1): substring = s[i:j]; if len(substring) < min_length: min_length = len(substring); return min_length; print(find_shortest_substring('abc'))",
+    "label": 3
+  },
+  {
+    "code": "def is_anagram(s1, s2): for i in range(len(s1)): if s1[i] not in s2: return False; return True; print(is_anagram('abc', 'bca'))",
+    "label": 3
+  },
+  {
+    "code": "def find_subsequences(s): subsequences = []; for i in range(len(s)): for j in range(i + 1, len(s) + 1): subsequence = s[i:j]; subsequences.append(subsequence); return subsequences; print(find_subsequences('abc'))",
+    "label": 3
+  },
+  {
+    "code": "def find_permutations(s): permutations = []; for i in range(len(s)): permutations.append(s[i]); return permutations; print(find_permutations('abc'))",
+    "label": 3
+  },
+  {
+    "code": "def is_sorted(numbers): for i in range(len(numbers) - 1): if numbers[i] > numbers[i + 1]: return False; return True; print(is_sorted([1, 2, 3]))",
+    "label": 3
+  },
+  {
+    "code": "def find_rotation(s): rotation = ''; for i in range(1, len(s)): rotation = s[i:] + s[:i]; return rotation; print(find_rotation('abc'))",
+    "label": 3
+  },
+  {
+    "code": "def find_reverse(s): reverse = ''; for i in range(len(s) - 1, -1, -1): reverse = reverse + s[len(s) - i - 1]; return reverse; print(find_reverse('abc'))",
+    "label": 3
+  },
+  {
+    "code": "def is_symmetric(s): for i in range(len(s) // 2): if s[i] != s[len(s) - i - 1]: return False; return True; print(is_symmetric('madam'))",
+    "label": 3
+  },
+  {
+    "code": "def find_transpose(matrix): transpose = []; for i in range(len(matrix[0])): row = []; for j in range(len(matrix)): row.append(matrix[j][i]); transpose.append(row); return transpose; print(find_transpose([[1, 2], [3, 4]]))",
+    "label": 3
+  },
+  {
+    "code": "def find_determinant(matrix): determinant = matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0]; return determinant; print(find_determinant([[1, 2], [3, 4]]))",
+    "label": 3
+  },
+  {
+    "code": "def find_inverse(matrix): inverse = [[matrix[1][1], -matrix[0][1]], [-matrix[1][0], matrix[0][0]]]; return inverse; print(find_inverse([[1, 2], [3, 4]]))",
+    "label": 3
+  },
+  {
+    "code": "def find_eigenvalues(matrix): eigenvalues = [matrix[0][0], matrix[1][1]]; return eigenvalues; print(find_eigenvalues([[1, 2], [3, 4]]))",
+    "label": 3
+  },
+  {
+    "code": "def find_eigenvectors(matrix): eigenvectors = [[1, 0], [0, 1]]; return eigenvectors; print(find_eigenvectors([[1, 2], [3, 4]]))",
+    "label": 3
+  },
+  {
+    "code": "def find_trace(matrix): trace = matrix[0][0] + matrix[1][1]; return trace; print(find_trace([[1, 2], [3, 4]]))",
+    "label": 3
+  },
+  {
+    "code": "def find_rank(matrix): rank = 2; return rank; print(find_rank([[1, 2], [3, 4]]))",
+    "label": 3
+  },
+  {
+    "code": "def find_nullspace(matrix): nullspace = [[0], [0]]; return nullspace; print(find_nullspace([[1, 2], [3, 4]]))",
+    "label": 3
+  },
+  {
+    "code": "def find_columnspace(matrix): columnspace = [[1], [0]], [[0], [1]]; return columnspace; print(find_columnspace([[1, 2], [3, 4]]))",
+    "label": 3
+  },
+  {
+    "code": "def find_rowspace(matrix): rowspace = [[1, 0], [0, 1]]; return rowspace; print(find_rowspace([[1, 2], [3, 4]]))",
+    "label": 3
+  }
+]
